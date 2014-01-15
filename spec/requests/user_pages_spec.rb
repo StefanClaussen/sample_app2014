@@ -24,7 +24,7 @@ describe "User pages" do
       it { should have_selector('div.pagination') }
 
       it "should list each user" do
-        User.all.each do |user|
+        User.all[0..2].each do |user|
           expect(page).to have_selector('li', text: user.name)
         end
       end
