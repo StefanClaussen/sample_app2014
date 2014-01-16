@@ -82,7 +82,7 @@ describe "User pages" do
         it "should increment the other user's followers count" do
           expect do
             click_button "Follow"
-          end.to change(user.followed_users, :count).by(1)
+          end.to change(other_user.followers, :count).by(1)
         end
 
         describe "toggling the button" do
@@ -102,6 +102,12 @@ describe "User pages" do
             click_button "Unfollow"
           end.to change(user.followed_users, :count).by(-1)
         end
+
+        it "should decrement the other user's followers count" do
+          expect do
+            click_button "Unfollow"
+           end.to change(other_user.followers, :count).by(-1)
+         end 
 
         describe "toggling the button" do
           before { click_button "Unfollow" }
@@ -173,7 +179,7 @@ describe "User pages" do
   end
 
   describe "with valid information" do
-    let(:new_name)  { "new Name" }
+    let(:new_name)  { "New Name" }
     let(:new_email) { "new@example.com" }
     before do
       fill_in "Name",             with: new_name
