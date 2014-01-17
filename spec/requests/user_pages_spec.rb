@@ -67,7 +67,7 @@ describe "User pages" do
     end
 
     describe "follow/unfollow buttons" do
-      let(:other_user) {FactoryGirl.create(:user) }
+      let(:other_user) { FactoryGirl.create(:user) }
       before { sign_in user }
 
       describe "following a user" do
@@ -150,7 +150,7 @@ describe "User pages" do
 
       describe "after saving the user" do
         before { click_button submit }
-        let(:user) {User.find_by(email: 'user@example.com') }
+        let(:user) { User.find_by(email: 'user@example.com') }
 
         it { should have_link('Sign out') }
         it { should have_title(user.name) }

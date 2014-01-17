@@ -65,7 +65,7 @@ describe User do
 
   describe "when email format is valid" do
   	it "should be valid" do
-  		addresses = %w[user@foo.COM A_US-ER@f.b.org frst.lst@foo.jp a+b@baz.cn]
+  		addresses = %w[user@foo.COM A_US-ER@f.b.org frst.1st@foo.jp a+b@baz.cn]
   		addresses.each do |valid_address|
   			@user.email = valid_address
   			expect(@user).to be_valid
@@ -90,7 +90,7 @@ describe User do
   	it { should_not be_valid }
   end
 
-  describe "when password does not match confirmation" do
+  describe "when password doesn't match confirmation" do
   	before { @user.password_confirmation = "mismatch" }
   	it { should_not be_valid }
   end
